@@ -1,0 +1,450 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.2                      
+******************************************************************************
+>> Linked Fri May 06 14:05:58 2016
+
+OUTPUT FILE NAME:   <IoT_sniffer_RTOS.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00003401
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000035e4  0003ca1c  R  X
+  SRAM                  20000000   00008000  0000220d  00005df3  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000035e8   000035e8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00003328   00003328    r-x .text
+  00003598    00003598    00000050   00000050    r-- .cinit
+20000000    20000000    00002210   00000000    rw-
+  20000000    20000000    00001fe1   00000000    rw- .bss
+  20001fe4    20001fe4    00000200   00000000    rw- .stack
+  200021e4    200021e4    0000002c   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00003328     
+                  0000026c    00001e0c     rtos.obj (.text)
+                  00002078    00000fec     Sniffer.obj (.text)
+                  00003064    000001ac     UART.obj (.text)
+                  00003210    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000032ac    0000007a                                   : memset_t2.obj (.text)
+                  00003326    00000002     --HOLE-- [fill = 0]
+                  00003328    0000006c                                   : autoinit.obj (.text)
+                  00003394    0000006a                                   : copy_decompress_rle.obj (.text)
+                  000033fe    00000002     --HOLE-- [fill = 0]
+                  00003400    00000050                                   : boot.obj (.text)
+                  00003450    0000004c                                   : cpy_tbl.obj (.text)
+                  0000349c    00000044                                   : exit.obj (.text)
+                  000034e0    00000030                                   : strncpy.obj (.text)
+                  00003510    00000018                                   : args_main.obj (.text)
+                  00003528    00000014                                   : _lock.obj (.text)
+                  0000353c    00000014                                   : strcpy.obj (.text)
+                  00003550    00000014                                   : strlen.obj (.text)
+                  00003564    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00003572    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  0000357e    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  0000358a    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00003590    00000004                                   : pre_init.obj (.text)
+
+.cinit     0    00003598    00000050     
+                  00003598    00000027     (.cinit..data.load) [load image, compression = rle]
+                  000035bf    00000001     --HOLE-- [fill = 0]
+                  000035c0    0000000c     (__TI_handler_table)
+                  000035cc    00000004     --HOLE-- [fill = 0]
+                  000035d0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000035d8    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000000    00001fe1     UNINITIALIZED
+                  20000000    00001400     rtos.obj (.bss:stack)
+                  20001400    00000a00     rtos.obj (.bss:packets)
+                  20001e00    00000100     rtos.obj (.bss:data)
+                  20001f00    000000b4     rtos.obj (.bss:tcb)
+                  20001fb4    00000004     (.common:arp)
+                  20001fb8    00000004     (.common:ctrlData)
+                  20001fbc    00000004     (.common:ctrlInfo)
+                  20001fc0    00000004     (.common:dataInfo)
+                  20001fc4    00000004     (.common:enc28j60)
+                  20001fc8    00000004     (.common:ether)
+                  20001fcc    00000004     (.common:icmp)
+                  20001fd0    00000004     (.common:ip)
+                  20001fd4    00000004     (.common:ipv4Address)
+                  20001fd8    00000004     (.common:sum)
+                  20001fdc    00000004     (.common:udp)
+                  20001fe0    00000001     (.common:BWriteIndex)
+
+.TI.noinit 
+*          0    20000000    00000000     UNINITIALIZED
+
+.stack     0    20001fe4    00000200     UNINITIALIZED
+                  20001fe4    00000200     --HOLE--
+
+.data      0    200021e4    0000002c     UNINITIALIZED
+                  200021e4    00000017     rtos.obj (.data)
+                  200021fb    00000001     --HOLE--
+                  200021fc    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20002204    00000008                                   : exit.obj (.data)
+                  2000220c    00000004                                   : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    200021e4    00000000     UNINITIALIZED
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000035d8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00003598, load size=00000027 bytes, run addr=200021e4, run size=0000002c bytes, compression=rle
+	.bss: load addr=000035d0, load size=00000008 bytes, run addr=20000000, run size=00001fe1 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000035c0 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                        
+-------   ----                        
+200021f9  BReadIndex                  
+20001fe0  BWriteIndex                 
+0000349d  C$$EXIT                     
+000026e9  ProcessBatteryChargerPacket 
+0000357f  ResetISR                    
+UNDEFED   SHT$$INIT_ARRAY$$Base       
+UNDEFED   SHT$$INIT_ARRAY$$Limit      
+200021f8  UDPPacketCount              
+200021e4  __STACK_END                 
+00000200  __STACK_SIZE                
+200021e4  __STACK_TOP                 
+000035d8  __TI_CINIT_Base             
+000035e8  __TI_CINIT_Limit            
+000035c0  __TI_Handler_Table_Base     
+000035cc  __TI_Handler_Table_Limit    
+00003329  __TI_auto_init              
+20002204  __TI_cleanup_ptr            
+00003565  __TI_decompress_none        
+0000358b  __TI_decompress_rle24       
+20002208  __TI_dtors_ptr              
+00000000  __TI_static_base__          
+00003573  __TI_zero_init              
+000032ad  __aeabi_memclr              
+000032ad  __aeabi_memclr4             
+000032ad  __aeabi_memclr8             
+00003211  __aeabi_memcpy              
+00003211  __aeabi_memcpy4             
+00003211  __aeabi_memcpy8             
+000032af  __aeabi_memset              
+000032af  __aeabi_memset4             
+000032af  __aeabi_memset8             
+ffffffff  __binit__                   
+ffffffff  __c_args__                  
+20001fe4  __stack                     
+00003511  _args_main                  
+00003401  _c_int00                    
+200021fc  _lock                       
+00003537  _nop                        
+0000352f  _register_lock              
+00003529  _register_unlock            
+00003591  _system_pre_init            
+20002200  _unlock                     
+000034a1  abort                       
+20001fb4  arp                         
+ffffffff  binit                       
+200021ef  broadCastIp                 
+00003451  copy_in                     
+00001709  createProcess               
+000029b5  createUint16_t              
+00002971  createUint32_t              
+20001fb8  ctrlData                    
+200021f6  ctrlDest                    
+20001fbc  ctrlInfo                    
+20001e00  data                        
+20001fc0  dataInfo                    
+20001fc4  enc28j60                    
+20001fc8  ether                       
+00000fe7  etherCalcIpChecksum         
+00000345  etherClearReg               
+000002a1  etherCsOff                  
+00000291  etherCsOn                   
+00001541  etherGetId                  
+0000062d  etherGetPacket              
+00000fa7  etherGetUdpData             
+0000154d  etherIncId                  
+000004a1  etherInit                   
+000008e1  etherInitStructures         
+00000b29  etherIsArp                  
+00000ed9  etherIsDataUdp              
+0000101f  etherIsDiscReq              
+00000915  etherIsIp                   
+00000981  etherIsIpUnicast            
+00000707  etherIsOverflow             
+000009db  etherIsPingReq              
+00000de5  etherIsUdp                  
+0000155d  etherIsValidIp              
+00000619  etherKbhit                  
+0000072f  etherPutPacket              
+00000483  etherReadMem                
+00000471  etherReadMemStart           
+00000491  etherReadMemStop            
+000003cf  etherReadPhy                
+000002dd  etherReadReg                
+00000cc1  etherSendArpReq             
+00000bb5  etherSendArpResp            
+000010bd  etherSendDiscResponse       
+00000a15  etherSendPingResp           
+00001319  etherSendUdpData            
+0000037b  etherSetBank                
+00001593  etherSetIpAddress           
+0000030f  etherSetReg                 
+00000811  etherSumWords               
+00000455  etherWriteMem               
+00000443  etherWriteMemStart          
+00000469  etherWriteMemStop           
+00000397  etherWritePhy               
+000002a9  etherWriteReg               
+000034a9  exit                        
+00000000  g_pfnVectors                
+00000883  getEtherChecksum            
+00001851  get_SP                      
+000030b3  getcUart0                   
+000008bd  htons                       
+20001fcc  icmp                        
+0000198d  initHw                      
+000030fb  intTostring                 
+20001fd0  ip                          
+20001fd4  ipv4Address                 
+00001db1  lengthyFn                   
+00001ab9  listenToNetwork             
+200021e9  macAddress                  
+00001e15  main                        
+2000220c  main_func_sp                
+00003211  memcpy                      
+000032b5  memset                      
+200021e6  nextPacketLsb               
+200021e7  nextPacketMsb               
+20001400  packets                     
+00001da1  partOfLengthyFn             
+00002b23  printBatteryInfo            
+00002795  printDateTime               
+00002dd5  printElectricityCost        
+00002a9d  printInt16                  
+00002a21  printUint16                 
+00002d0f  printWindDirection          
+00002649  processElectrictyCostPacket 
+000023ad  processNewsFeedPacket       
+00001c45  processPacket               
+0000247b  processStromAlertPacket     
+00002079  processThermostatPacket     
+0000259f  processTimeServicesPacket   
+00002119  processWeatherSensorsPacket 
+000021db  processWeatherServicesPacket
+00003065  putcUart0                   
+00003081  putsUart0                   
+000030c7  putsnUart0                  
+000015d1  rtosInit                    
+00001625  rtosScheduler               
+000016d1  rtosStart                   
+200021e8  sequenceId                  
+000018b5  sleep                       
+200021f4  sourcePort                  
+00000289  spiRead                     
+0000026d  spiWrite                    
+20000000  stack                       
+0000353d  strcpy                      
+00003551  strlen                      
+000034e1  strncpy                     
+20001fd8  sum                         
+00001921  systickIsr                  
+200021e4  taskCount                   
+200021e5  taskCurrent                 
+20001f00  tcb                         
+20001fdc  udp                         
+00001839  update_SP                   
+00001a8b  waitMicrosecond             
+00001869  yield                       
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                        
+-------   ----                        
+00000000  __TI_static_base__          
+00000000  g_pfnVectors                
+00000200  __STACK_SIZE                
+0000026d  spiWrite                    
+00000289  spiRead                     
+00000291  etherCsOn                   
+000002a1  etherCsOff                  
+000002a9  etherWriteReg               
+000002dd  etherReadReg                
+0000030f  etherSetReg                 
+00000345  etherClearReg               
+0000037b  etherSetBank                
+00000397  etherWritePhy               
+000003cf  etherReadPhy                
+00000443  etherWriteMemStart          
+00000455  etherWriteMem               
+00000469  etherWriteMemStop           
+00000471  etherReadMemStart           
+00000483  etherReadMem                
+00000491  etherReadMemStop            
+000004a1  etherInit                   
+00000619  etherKbhit                  
+0000062d  etherGetPacket              
+00000707  etherIsOverflow             
+0000072f  etherPutPacket              
+00000811  etherSumWords               
+00000883  getEtherChecksum            
+000008bd  htons                       
+000008e1  etherInitStructures         
+00000915  etherIsIp                   
+00000981  etherIsIpUnicast            
+000009db  etherIsPingReq              
+00000a15  etherSendPingResp           
+00000b29  etherIsArp                  
+00000bb5  etherSendArpResp            
+00000cc1  etherSendArpReq             
+00000de5  etherIsUdp                  
+00000ed9  etherIsDataUdp              
+00000fa7  etherGetUdpData             
+00000fe7  etherCalcIpChecksum         
+0000101f  etherIsDiscReq              
+000010bd  etherSendDiscResponse       
+00001319  etherSendUdpData            
+00001541  etherGetId                  
+0000154d  etherIncId                  
+0000155d  etherIsValidIp              
+00001593  etherSetIpAddress           
+000015d1  rtosInit                    
+00001625  rtosScheduler               
+000016d1  rtosStart                   
+00001709  createProcess               
+00001839  update_SP                   
+00001851  get_SP                      
+00001869  yield                       
+000018b5  sleep                       
+00001921  systickIsr                  
+0000198d  initHw                      
+00001a8b  waitMicrosecond             
+00001ab9  listenToNetwork             
+00001c45  processPacket               
+00001da1  partOfLengthyFn             
+00001db1  lengthyFn                   
+00001e15  main                        
+00002079  processThermostatPacket     
+00002119  processWeatherSensorsPacket 
+000021db  processWeatherServicesPacket
+000023ad  processNewsFeedPacket       
+0000247b  processStromAlertPacket     
+0000259f  processTimeServicesPacket   
+00002649  processElectrictyCostPacket 
+000026e9  ProcessBatteryChargerPacket 
+00002795  printDateTime               
+00002971  createUint32_t              
+000029b5  createUint16_t              
+00002a21  printUint16                 
+00002a9d  printInt16                  
+00002b23  printBatteryInfo            
+00002d0f  printWindDirection          
+00002dd5  printElectricityCost        
+00003065  putcUart0                   
+00003081  putsUart0                   
+000030b3  getcUart0                   
+000030c7  putsnUart0                  
+000030fb  intTostring                 
+00003211  __aeabi_memcpy              
+00003211  __aeabi_memcpy4             
+00003211  __aeabi_memcpy8             
+00003211  memcpy                      
+000032ad  __aeabi_memclr              
+000032ad  __aeabi_memclr4             
+000032ad  __aeabi_memclr8             
+000032af  __aeabi_memset              
+000032af  __aeabi_memset4             
+000032af  __aeabi_memset8             
+000032b5  memset                      
+00003329  __TI_auto_init              
+00003401  _c_int00                    
+00003451  copy_in                     
+0000349d  C$$EXIT                     
+000034a1  abort                       
+000034a9  exit                        
+000034e1  strncpy                     
+00003511  _args_main                  
+00003529  _register_unlock            
+0000352f  _register_lock              
+00003537  _nop                        
+0000353d  strcpy                      
+00003551  strlen                      
+00003565  __TI_decompress_none        
+00003573  __TI_zero_init              
+0000357f  ResetISR                    
+0000358b  __TI_decompress_rle24       
+00003591  _system_pre_init            
+000035c0  __TI_Handler_Table_Base     
+000035cc  __TI_Handler_Table_Limit    
+000035d8  __TI_CINIT_Base             
+000035e8  __TI_CINIT_Limit            
+20000000  stack                       
+20001400  packets                     
+20001e00  data                        
+20001f00  tcb                         
+20001fb4  arp                         
+20001fb8  ctrlData                    
+20001fbc  ctrlInfo                    
+20001fc0  dataInfo                    
+20001fc4  enc28j60                    
+20001fc8  ether                       
+20001fcc  icmp                        
+20001fd0  ip                          
+20001fd4  ipv4Address                 
+20001fd8  sum                         
+20001fdc  udp                         
+20001fe0  BWriteIndex                 
+20001fe4  __stack                     
+200021e4  __STACK_END                 
+200021e4  __STACK_TOP                 
+200021e4  taskCount                   
+200021e5  taskCurrent                 
+200021e6  nextPacketLsb               
+200021e7  nextPacketMsb               
+200021e8  sequenceId                  
+200021e9  macAddress                  
+200021ef  broadCastIp                 
+200021f4  sourcePort                  
+200021f6  ctrlDest                    
+200021f8  UDPPacketCount              
+200021f9  BReadIndex                  
+200021fc  _lock                       
+20002200  _unlock                     
+20002204  __TI_cleanup_ptr            
+20002208  __TI_dtors_ptr              
+2000220c  main_func_sp                
+ffffffff  __binit__                   
+ffffffff  __c_args__                  
+ffffffff  binit                       
+UNDEFED   SHT$$INIT_ARRAY$$Base       
+UNDEFED   SHT$$INIT_ARRAY$$Limit      
+
+[157 symbols]
