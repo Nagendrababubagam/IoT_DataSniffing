@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-//  EE6314 Spring 2016 IoT Project: Control Node
+//  Control Node
 //
 //  Simple Breakdown of what is needed for the discovery transaction
 //
